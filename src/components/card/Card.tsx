@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         width: CARD_WIDTH,
         height: CARD_HEIGHT,
         borderRadius: 16,
-        backgroundColor: "gray",
+        // backgroundColor: "gray",
     },
 });
 
@@ -43,8 +43,15 @@ export const cards = [
 
 interface CardProps {
     card: Cards;
+    color: string;
 }
 
-export const Card = ({ card }: CardProps) => {
-    return <Image style={styles.card} source={assets[card]} />;
+export const Card = ({ card, color }: CardProps) => {
+    // return <Image style={styles.card} source={assets[card]} />;
+    return (
+        <Image
+            style={[styles.card, { backgroundColor: color ?? "gray" }]}
+            source={assets[card]}
+        />
+    );
 };

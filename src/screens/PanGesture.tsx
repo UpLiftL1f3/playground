@@ -80,7 +80,9 @@ const PanGesture: FC<Props> = ({ width, height }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "red",
+        borderColor: "#a2a2a2ec",
+        borderTopWidth: 1,
+        paddingTop: 1,
     },
 });
 export default PanGesture;

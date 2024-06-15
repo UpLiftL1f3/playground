@@ -1,23 +1,26 @@
-import PanGesture from "@src/screens/PanGesture";
+import Transitions from "@src/screens/Transitions";
 import { FC, useState } from "react";
 import { LayoutRectangle, SafeAreaView, StyleSheet } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface Props {}
 
 const animation: FC<Props> = (props) => {
     const [container, setContainer] = useState<null | LayoutRectangle>(null);
+    const insets = useSafeAreaInsets();
 
     return (
         <SafeAreaView
             style={{
                 flex: 1,
+                marginBottom: insets.bottom,
                 // justifyContent: "center",
                 // alignItems: "center",
-                backgroundColor: "blue",
+                // backgroundColor: "gray",
             }}
             onLayout={({ nativeEvent: { layout } }) => setContainer(layout)}
         >
-            {container && <PanGesture {...container} />}
+            {container && <Transitions {...container} />}
         </SafeAreaView>
     );
 };
