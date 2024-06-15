@@ -22,12 +22,6 @@ const Animations: FC<Props> = (props) => {
     const [play, setPlay] = useState(false);
     const paused = useSharedValue(!play);
     const progress = useSharedValue<null | number>(null);
-    // useEffect(() => {
-    //     progress.value = withPause(
-    //         withRepeat(withTiming(1, { duration: 1000, easing }), -1, true),
-    //         paused
-    //     );
-    // }, [paused, progress]);
 
     return (
         <View style={styles.container}>
