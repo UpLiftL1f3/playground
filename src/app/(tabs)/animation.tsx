@@ -1,4 +1,4 @@
-import Transitions from "@src/screens/Transitions";
+import Animations from "@src/screens/Animations";
 import { FC, useState } from "react";
 import { LayoutRectangle, SafeAreaView, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -13,14 +13,14 @@ const animation: FC<Props> = (props) => {
         <SafeAreaView
             style={{
                 flex: 1,
-                marginBottom: insets.bottom,
+                // marginBottom: insets.bottom,
                 // justifyContent: "center",
                 // alignItems: "center",
                 // backgroundColor: "gray",
             }}
             onLayout={({ nativeEvent: { layout } }) => setContainer(layout)}
         >
-            {container && <Transitions {...container} />}
+            {container && <Animations {...container} />}
         </SafeAreaView>
     );
 };

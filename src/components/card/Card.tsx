@@ -43,7 +43,7 @@ export const cards = [
 
 interface CardProps {
     card: Cards;
-    color: string;
+    color?: string;
 }
 
 export const Card = ({ card, color }: CardProps) => {

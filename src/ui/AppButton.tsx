@@ -1,4 +1,5 @@
-import React, { ReactNode, forwardRef, useState } from "react";
+import { Theme, useTheme } from "@react-navigation/native";
+import React, { ReactNode, forwardRef, useMemo, useState } from "react";
 import {
     Pressable,
     StyleProp,
@@ -32,6 +33,9 @@ const AppButton = forwardRef<View, Props>((props, ref) => {
         pressedLabelStyle,
         pressedOpacity,
     } = props;
+
+    const theme = useTheme();
+    const styles = useMemo(() => generateStyles(theme), [theme]);
 
     const [isPressed, setIsPressed] = useState(false);
 
@@ -78,21 +82,24 @@ const AppButton = forwardRef<View, Props>((props, ref) => {
     );
 });
 
-const styles = StyleSheet.create({
-    container: {
-        width: "auto",
-        // height: 45,
-        // backgroundColor: "blue",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 5,
-    },
-    label: {
-        // color: colors.CONTRAST,
-        fontSize: 18,
-    },
-    spinnerContainer: {
-        justifyContent: "center",
-    },
-});
+let styles: any;
+function generateStyles(theme: Theme) {
+    return (styles = StyleSheet.create({
+        container: {
+            width: "auto",
+            // height: 45,
+            // backgroundColor: "blue",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 5,
+        },
+        label: {
+            color: theme.colors.text,
+            fontSize: 18,
+        },
+        spinnerContainer: {
+            justifyContent: "center",
+        },
+    }));
+}
 export default AppButton;
