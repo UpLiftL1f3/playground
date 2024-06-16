@@ -31,8 +31,6 @@ export const Bubble = ({ progress, start, end }: BubbleProps) => {
     const theme = useTheme();
     const styles = useMemo(() => generateStyles(theme), [theme]);
 
-    console.log("PROGRESS:", progress.value, start, end);
-
     const style = useAnimatedStyle(() => {
         const opacity = interpolate(
             progress.value ?? 0,

@@ -1,4 +1,5 @@
 import { CARD_HEIGHT, CARD_WIDTH, Card, Cards } from "@components/card/Card";
+import { withBounce } from "@src/functions/animations/animations";
 import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
@@ -43,15 +44,31 @@ const PanGesture: FC<Props> = ({ width, height }) => {
             );
         })
         .onEnd(({ velocityX, velocityY }) => {
-            translateX.value = withDecay({
-                velocity: velocityX,
-                clamp: [0, boundX],
-            });
-            translateY.value = withDecay({
-                velocity: velocityY,
-                clamp: [0, boundY],
-            });
+            translateX.value = withBounce(
+                withDecay({
+                    velocity: velocityX,
+                }),
+                0,
+                boundX
+            );
+            translateY.value = withBounce(
+                withDecay({
+                    velocity: velocityY,
+                }),
+                0,
+                boundY
+            );
         });
+    // .onEnd(({ velocityX, velocityY }) => {
+    //     translateX.value = withDecay({
+    //         velocity: velocityX,
+    //         clamp: [0, boundX],
+    //     });
+    //     translateY.value = withDecay({
+    //         velocity: velocityY,
+    //         clamp: [0, boundY],
+    //     });
+    // });
     // .onFinalize(() => {
     //     offset.value = withSpring(0);
     //     pressed.value = false;

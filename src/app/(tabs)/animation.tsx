@@ -1,4 +1,4 @@
-import Animations from "@src/screens/Animations";
+import PanGesture from "@src/screens/PanGesture";
 import { FC, useState } from "react";
 import { LayoutRectangle, SafeAreaView, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -20,7 +20,7 @@ const animation: FC<Props> = (props) => {
             }}
             onLayout={({ nativeEvent: { layout } }) => setContainer(layout)}
         >
-            {container && <Animations {...container} />}
+            {container && <PanGesture {...container} />}
         </SafeAreaView>
     );
 };
